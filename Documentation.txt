@@ -1,0 +1,112 @@
+Name: Saksham Mehla    
+Roll. No.: 2019270  
+_________________________
+
+Computer Organization  
+End Sem Assignment     
+
+Documentation
+
+The given code files simulate the functions of a Cache, that is, storing and reading some of the recently accessed words from the main memory for a faster access.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Task 1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A class named Cache is defined to build a single level cache consisiting of:-
+
+-> Tag array (tag[]) - Each element in Tag array stores the tag part of the address which represents the address of the corresponding block in the main memory.
+
+-> Block array (block[]) - Each element in Block array is an array storing each word of the block.
+
+-> Priority array (priority[]) - Keeps track of the priority of each block. Block with lowest priority value holds the lowest priority and is removed first in case of replacement in associative and n way set associative mapping. Newly added block hold priority 'ncl' , where ncl is number of cache lines in the cache. As data of a block is accessed, its priority changes to ncl and priority of rest blocks present in the cache is decreased by 1.
+
+Inputs:-
+1. S - size of cache (in words). It should be a power of 2.
+2. B - size of a block (in words). It should be a power of 2.
+3. N - Length of address of a word (in bits). If size of main memory is considered as 2^w, then N = w.
+4. Mapping type - The type of mapping you want to use for carrying out functions  read and write. Enter 0 for direct mapping, 1 for associative mapping, and 2 for n way set associative mapping.
+5. n (in the case of set associative mapping) - size of a set.
+6. Address - The address of word you want to access. Its length should be N bits
+7. data (in case of write operation) - String you want to store at the given address.
+
+Assumptions:-
+1. The binary address are stored in the form of strings.
+2. The cache is standalone. There is no main memory. 
+3. The cache is initially empty.
+4. If a block consisting of some data is removed from the cache(replaced with another block), the data stored in that block is lost. When the block is brought back in the cache, it is empty.
+5. LRU method is used for replacement in the case of associative and n way set associative mapping.
+
+Functions used:-
+-> print_cache() - Prints the whole cache on the console.
+
+-> min_priority(int[] arr) - return the index of the block with least priority.
+
+-> direct_read(String address) - prints the data stored in the word with the given address. Prints "address not found" in case of a miss. Uses direct mapping.
+
+-> direct_write(String address, String data) - inserts string data at the word with the given address. In case of miss, it brings the block into the cache and then writes the data at the address. Uses direct mapping.
+
+-> associative_read(String address) - prints the data stored in the word with the given address. Prints "address not found" in case of a miss. Uses associative mapping.
+
+-> associative_write(String address, String data) - inserts string data at the word with the given address. In case of miss, it brings the block into the cache and then writes the data at the address. Uses associative mapping.
+
+-> n_wayRead(int n, String address) - prints the data stored in the word with the given address. Prints "address not found" in case of a miss. Uses set associative  mapping.
+
+-> n_wayWrite(int n, String address, String data) - inserts string data at the word with the given address. In case of miss, it brings the block into the cache and then writes the data at the address. Uses set associative mapping.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Task 2 (Bonus)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A class named Cache is defined to build a 2 level cache consisiting of:-
+
+-> Tag array (tag[]) - Each element in Tag array stores the tag part of the address which represents the address of the corresponding block in the main memory.
+
+-> Block array (block[]) - Each element in Block array is an array storing each word of the block.
+
+-> Priority array (priority[]) - Keeps track of the priority of each block. Block with lowest priority value holds the lowest priority and is removed first in case of replacement in associative and n way set associative mapping. Newly added block hold priority 'ncl' , where ncl is number of cache lines in the cache. As data of a block is accessed, its priority changes to ncl and priority of rest blocks present in the cache is decreased by 1.
+
+Caches L1 for level 1 and L2 for level 2 are built.
+
+Inputs:-
+1. S - size of cache (in words). It should be a power of 2. 
+Size of L2 = S, Size of L1 = S/2.
+2. B - size of a block (in words). It should be a power of 2.
+3. N - Length of address of a word (in bits). If size of main memory is considered as 2^w, then N = w.
+4. Mapping type - The type of mapping you want to use for carrying out functions  read and write. Enter 0 for direct mapping, 1 for associative mapping, and 2 for n way set associative mapping.
+5. n (in the case of set associative mapping) - size of a set.
+6. Address - The address of word you want to access. Its length should be N bits
+7. data (in case of write operation) - String you want to store at the given address.
+
+Assumptions:-
+1. The binary address are stored in the form of strings.
+2. The cache is a 2 level standalone cache. There is no main memory. 
+3. Both the caches are initially empty.
+4. If a block consisting of some data is removed from the cache L2 (replaced with another block), the data stored in that block is lost. When the block is brought back in the cache, it is empty.
+5. LRU method is used for replacement in the case of associative and n way set associative mapping.
+
+Functions used:-
+-> print_cache() - This method prints the whole cache on the console.
+
+-> min_priority(int[] arr) - return the index of the block with least priority.
+
+-> direct_read(Cache L, String address) - prints the data stored in the word with the given address in cache L. Prints "address not found" in case of a miss. Uses direct mapping.
+
+-> direct_write(Cache L, String address, String data) - inserts string data at the word with the given address in cache L. In case of miss, it brings the block into the cache and then writes the data at the address. Uses direct mapping.
+
+-> associative_read(Cache L, String address) - prints the data stored in the word with the given address in cache L. Prints "address not found" in case of a miss. Uses associative mapping.
+
+-> associative_write(Cache L, String address, String data) - inserts string data at the word with the given address in cache L. In case of miss, it brings the block into the cache and then writes the data at the address. Uses associative mapping.
+
+-> n_wayRead(Cache L, int n, String address) - prints the data stored in the word with the given address in cache L. Prints "address not found" in case of a miss. Uses set associative  mapping.
+
+-> n_wayWrite(Cache L, int n, String address, String data) - inserts string data at the word with the given address in cache L. In case of miss, it brings the block into the cache and then writes the data at the address. Uses set associative mapping.
+
+**Read implementation : If block of given address is present in L1, read the data. If block of given address is present in L2 but not in L1, read the data from L2 and import the block in L1. If block of given address is not present in L1 as well as L2, show miss.
+
+**Write implementation : If block of given address is present in L1, write the data in L1 and then L2. If block of given address is present in L2 but not in L1, write the data in L2 and then import that block in L1. If block of given address is not present in L1 as well as L2, insert block in both L1 and L2 and write data at given address.
+
+***********************************************************************************************************************************************************************
+
+
+
+
