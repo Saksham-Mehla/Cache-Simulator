@@ -1,16 +1,11 @@
-Name: Saksham Mehla    
-Roll. No.: 2019270  
-_________________________
-
-Computer Organization  
-End Sem Assignment     
-
 Documentation
+
+Owner: Saksham Mehla
 
 The given code files simulate the functions of a Cache, that is, storing and reading some of the recently accessed words from the main memory for a faster access.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Task 1
+Task 1 (Level-1 Cache)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 A class named Cache is defined to build a single level cache consisiting of:-
 
@@ -55,7 +50,7 @@ Functions used:-
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Task 2 (Bonus)
+Task 2 (Level-2 Cache)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 A class named Cache is defined to build a 2 level cache consisiting of:-
 
